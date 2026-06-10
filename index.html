@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+    body {
+        background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #f8fafc;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        padding: 40px 30px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    h1 {
+        font-size: 2.5rem;
+        background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
+    p { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 35px; text-align: justify; }
+    .btn {
+        display: inline-block;
+        padding: 14px 35px;
+        background: linear-gradient(to right, #6366f1, #a855f7);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+    }
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Website</title>
@@ -95,10 +141,15 @@
     <div class="welcome-container">
         <h1>Welcome To My World</h1>
         <p>इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है। हम चाहे एक-दूसरे को जानते हों या नहीं, लेकिन इस पल में आप मेरी दुनिया का एक हिस्सा हैं। थोड़ी देर यहाँ रुकिए, सुकून महसूस कीजिए, क्योंकि शायद आपको अपने ही दिल का कोई कोना यहाँ मिल जाए। आपका यहाँ होना मेरे हौसले को दोगुना करता है।</p>
+         <p>इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास hai...</p>
         <p>In a digital world full of endless scrolling and rushing screens, thank you for pausing here. This website is not just a collection of code; it is a small piece of my soul, my dreams, and my quiet journey. They say the internet can be a cold place, but I built this tiny corner to be a warm shelter for anyone who wanders in. Whether you came here by accident or intention, I hope you find a moment of peace and feel connected to this story. You are not just a visitor; you are a part of my dream now. Welcome home.</p>
  
 
-        <a href="#" class="btn" onclick="alert('Explore karne ke liye shukriya!')">Explore Website</a>
+        
+    
+    <a href="#" class="btn">Connect With Me</a>
+</div>
+
     </div>
 
 </body>
