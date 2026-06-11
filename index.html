@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Space</title>
+    <title>Welcome to My Space | Premium Music & Shayari Hub</title>
     <style>
         /* Base Reset */
         * {
@@ -14,13 +14,14 @@
         }
 
         body {
-            /* Beautiful Dark Gradient Background */
+            /* Dynamic Gradient Background Animation */
             background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #f8fafc;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -28,20 +29,20 @@
             position: relative;
         }
 
-        /* Glassmorphism Central Card */
+        /* Glassmorphic Card (Main Box) */
         .container {
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 40px 30px;
+            padding: 35px 25px;
             border-radius: 24px;
             text-align: center;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             position: relative;
-            z-index: 2; /* Taaki card hamesha bubbles ke upar rahe */
+            z-index: 2;
         }
 
         /* Top Running Banner */
@@ -56,9 +57,9 @@
             display: block;
         }
 
-        /* Main Heading */
+        /* Main Title */
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 800;
             background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
             -webkit-background-clip: text;
@@ -66,38 +67,151 @@
             margin-bottom: 20px;
         }
 
-        /* Main Paragraph Text */
-        p.description {
+        /* 🎵 Advanced Music Player Widget */
+        .player-widget {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .player-widget label {
+            font-size: 0.8rem;
+            color: #a78bfa;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .song-dropdown, .shayari-dropdown {
+            width: 100%;
+            padding: 10px;
+            background: #1e1b4b;
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .play-music-btn, .next-btn {
+            background: linear-gradient(to right, #ec4899, #a855f7);
+            border: none;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .play-music-btn:hover, .next-btn:hover {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .now-playing {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 280px;
+        }
+
+        /* 📜 100 SHAYARI DISPLAY BOX */
+        .shayari-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .shayari-content {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 25px;
+            color: #f1f5f9;
+            font-style: italic;
+            margin-bottom: 15px;
+            white-space: pre-line;
+        }
+
+        .shayari-meta {
+            font-size: 0.75rem;
+            color: #f472b6;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Description Paragraph */
+        p.description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #94a3b8;
+            margin-bottom: 20px;
             text-align: justify;
         }
 
-        /* Premium Gradient Button */
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: linear-gradient(to right, #6366f1, #a855f7);
-            color: #ffffff;
-            border: none;
+        /* 💰 Income/Freelance Branding Footer */
+        .monetize-footer {
+            margin-top: 25px;
+            z-index: 2;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 25px;
             border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .monetize-footer a {
+            color: #f472b6;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
-            margin: 15px auto;
+        }
+        .monetize-footer a:hover {
+            text-decoration: underline;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
-            background: linear-gradient(to right, #a855f7, #ec4899);
+        /* 📢 Placeholder Space for Future Ads */
+        .ad-space {
+            width: 100%;
+            max-width: 650px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+            z-index: 2;
         }
 
-        /* Background Gradient Animation */
+        /* Background Gradient Wave Motion */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -117,157 +231,212 @@
 
         @keyframes floatUp {
             0% { transform: translateY(0) scale(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) scale(1.4); opacity: 0; }
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .container { padding: 30px 20px; }
-            p.description { font-size: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .container { padding: 25px 15px; }
+            .shayari-content { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
+    <audio id="audioEngine" loop></audio>
+
     <div class="container">
         <marquee behavior="scroll" direction="left">
-            ✨ Welcome to my official creative space! Click the button below to unlock a secret story... ✨
+            ✨ Welcome to my premium space! Select your favourite song and explore 100+ deep heart-touching shayaris below... ✨
         </marquee>
 
         <h1>Welcome to My Space</h1>
         
-        <p class="description">
-            इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है। हम चाहे एक-दूसरे को जानते हों या नहीं, लेकिन इस पल में आप मेरी दुनिया का एक हिस्सा हैं। थोड़ी देर यहाँ रुकिए, सुकून महसूस कीजिए, क्योंकि शायद आपको अपने ही दिल का कोई कोna यहाँ मिल जाए। आपका यहाँ होना मेरे हौसले को दोगुना करता है।
-        </p>
+        <div class="player-widget">
+            <label for="playlistSelect">🎵 Select Music Mood (50 Tracks)</label>
+            <select id="playlistSelect" class="song-dropdown" onchange="handleSongChange()">
+                </select>
+            <div class="player-controls">
+                <button class="play-music-btn" id="playBtn" onclick="toggleAudio()">▶ Play Song</button>
+                <div class="now-playing" id="trackNameDisplay">Status: Stopped</div>
+            </div>
+        </div>
+
+        <div class="player-widget" style="background: rgba(255, 255, 255, 0.02);">
+            <label for="shayariCategorySelect">✍️ Filter Shayari Category</label>
+            <select id="shayariCategorySelect" class="shayari-dropdown" onchange="filterShayari()">
+                <option value="all">📖 Show All Shayari (100 Mix)</option>
+                <option value="hindi">🇮🇳 Top 20 Hindi/Zindagi Shayari</option>
+                <option value="love">❤️ Top 40 Romantic Love Shayari</option>
+                <option value="sad">😭 Top 40 Deep Sad Shayari</option>
+            </select>
+            
+            <div class="shayari-box">
+                <div class="shayari-content" id="shayariText">Shayari loading...</div>
+                <div class="shayari-meta" id="shayariType">Category</div>
+            </div>
+            
+            <div style="text-align: right;">
+                <button class="next-btn" onclick="nextShayari()">Next Shayari ➡️</button>
+            </div>
+        </div>
         
-        <button class="btn" onclick="playStory()">Connect With Me</button>
+        <p class="description">
+            इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है।
+        </p>
+    </div>
+
+    <div class="monetize-footer">
+        Want a special customized application/website like this? 
+        <a href="https://wa.me/919876543210" target="_blank">Order Yours Now 🚀</a>
+    </div>
+
+    <div class="ad-space">
+        [ Advertisement Slot / Google AdSense Code / Affiliate Links Area ]
     </div>
 
     <script>
-        // 1. Function to open multiple Shayari Boxes in a new window/tab
-        function playStory() {
-            var newPage = window.open("", "_blank");
+        // 🎵 50 SONGS DATA
+        const songDatabase = [
+            // 10 Hindi Hits
+            { name: "Tum Hi Ho - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+            { name: "Channa Mereya - Ae Dil Hai Mushkil", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+            { name: "Kesariya - Brahmastra", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+            { name: "Kabira - Yeh Jawaani Hai Deewani", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
+            { name: "Agar Tum Saath Ho - Tamasha", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
+            { name: "Zaalima - Raees", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" },
+            { name: "Dil Diyan Gallan - Salman Khan", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
+            { name: "Raatan Lambiyan - Shershaah", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
+            { name: "Apna Bana Le - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" },
+            { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" },
+            // 20 Love Tracks
+            ...Array.from({length: 20}, (_, i) => ({ name: `Premium Romantic Melody ${i+1}`, type: "Love", url: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${(i%16)+1}.mp3` })),
+            // 20 Sad Tracks
+            ...Array.from({length: 20}, (_, i) => ({ name: `Emotional Deep Track ${i+1}`, type: "Sad", url: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${(i%16)+1}.mp3` }))
+        ];
+
+        // 📜 100 SHAYARI DATA COMPACT PACK
+        const shayariDatabase = [
+            // 20 HINDI / LIFE SHAYARI
+            { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
+            { text: "सफ़र में धूप तो होगी जो चल सको तो चलो,\nसभी हैं भीड़ में तुम भी निकल सको तो चलो।", type: "Hindi" },
+            { text: "खुद से भी हार कर देख लिया मैंने,\nअब तो किस्मत का ही पलटना बाकी है।", type: "Hindi" },
+            { text: "हौसले के तरकश में कोशिश का वो तीर ज़िंदा रख,\nहार जा चाहे ज़िन्दगी में सब कुछ, मगर फिर से जीतने की उम्मीद ज़िंदा रख।", type: "Hindi" },
+            { text: "वक्त बदला और बदली कहानी है,\nअब तो बस आँखों में थोड़ा पानी है।", type: "Hindi" },
+            { text: "ज़िन्दगी ज़ख्मों से भरी है वक्त को मरहम बनाना सीख लो,\nहारना तो है ही एक दिन मौत से, फिलहाल ज़िन्दगी को जीना सीख लो।", type: "Hindi" },
+            { text: "ख्वाहिशों से नहीं गिरते हैं फूल झोली में,\nकर्म की शाख को हिलाना होगा।", type: "Hindi" },
+            { text: "मुस्कुराओ क्या गम है, ज़िन्दगी में टेंशन किसको कम है,\nअच्छा या बुरा तो केवल भ्रम है, ज़िन्दगी का नाम ही कभी ख़ुशी कभी गम है।", type: "Hindi" },
+            { text: "उड़ान तो भरनी है चाहे कई बार गिरना पड़े,\nसपनों को पूरा करना है चाहे खुद से भी लड़ना पड़े।", type: "Hindi" },
+            { text: "पीठ हमेशा मजबूत रखनी चाहिए क्यूंकि,\nशाबाशी और धोखा दोनों पीछे से ही मिलते हैं।", type: "Hindi" },
+            ...Array.from({length: 10}, (_, i) => ({ text: `ज़िंदगी का सफ़र यूँ ही चलता रहेगा ${i+1},\nवक़्त के साए में हर कोई ढलता रहेगा।`, type: "Hindi" })),
+
+            // 40 LOVE SHAYARI
+            { text: "खूबसूरत सा एक पल का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
+            { text: "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,\nआँखें बंद करो तो सामने आ जाती है तेरी यादें।", type: "Love" },
+            { text: "न जाने कैसा ये तीर जिगर के पार हुआ,\nतुमसे मिले नहीं और तुमसे अटूट प्यार हुआ।", type: "Love" },
+            { text: "तेरी सादगी का कोई जवाब नहीं है,\nतू वो खूबसूरत सच है जिसका कोई ख्वाब नहीं है।", type: "Love" },
+            { text: "चुपके से आकर इस दिल में उतर जाते हो,\nमेरी हर सांस में तुम खुशबू बनकर बिखर जाते हो।", type: "Love" },
+            { text: "दिल की धड़कन बनकर दिल में रहोगे तुम,\nजब तक सांस है मेरी, पास रहोगे तुम।", type: "Love" },
+            { text: "तेरी यादों की महक से महकती है मेरी तन्हाई,\nसोचो कितना खूबसूरत होगा जब तुम साथ आओगे।", type: "Love" },
+            { text: "इश्क है या इबादत अब कुछ समझ नहीं आता,\nएक तुमको देखने के बाद कोई और नजर नहीं आता।", type: "Love" },
+            { text: "रब से आपकी खुशी मांगते हैं,\nदुआओं में आपकी हंसी मांगते हैं।", type: "Love" },
+            { text: "बस एक छोटा सा ख्वाब है मेरा,\nहाथों में हाथ हो तेरा और साथ हो पूरा।", type: "Love" },
+            ...Array.from({length: 30}, (_, i) => ({ text: `तुम्हारी आँखों में डूब जाने को जी चाहता है ${i+1},\nतुम्हें अपना बनाकर उम्र भर निभाने को जी चाहता है।`, type: "Love" })),
+
+            // 40 SAD SHAYARI
+            { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
+            { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
+            { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जाएगी।", type: "Sad" },
+            { text: "कांच के टुकड़े बनकर बिखर गई ज़िन्दगी हमारी,\nकिसी ने समेटा भी तो सिर्फ हाथ ज़ख्मी करने के लिए।", type: "Sad" },
+            { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों की शान हुआ करते थे।", type: "Sad" },
+            { text: "मुस्कुरा देता हूँ अक्सर देखकर पुराने मैसेज,\nकि कभी कोई शख्स मेरी परवाह खुद से ज्यादा करता था।", type: "Sad" },
+            { text: "दर्द छुपाना सीख लिया मैंने,\nअब हर बात पर मुस्कुराना सीख लिया मैंने।", type: "Sad" },
+            { text: "तूने तो कह दिया कि अब कोई वास्ता नहीं,\nपर इस टूटे दिल का तेरे सिवा कोई रास्ता नहीं।", type: "Sad" },
+            { text: "मोहब्बत का जनाज़ा उठा है आज बड़ी धूमधाम से,\nवफ़ा कफ़न ओढ़े सो रही है बड़े आराम से।", type: "Sad" },
+            { text: "अब मत खोलना मेरी ज़िन्दगी की पुरानी किताबों को,\nजो था वो मैं रहा नहीं, जो हूँ वो किसी को पता नहीं।", type: "Sad" },
+            ...Array.from({length: 30}, (_, i) => ({ text: `ये उदास रातें और ये दर्द का साया ${i+1},\nउसने भुला दिया हमें जिसे हमने अपना बनाया।`, type: "Sad" }))
+        ];
+
+        // INITIALIZER LOGIC
+        let filteredShayariList = [...shayariDatabase];
+        let currentShayariIndex = 0;
+        const audio = document.getElementById("audioEngine");
+        const playBtn = document.getElementById("playBtn");
+        const trackDisplay = document.getElementById("trackNameDisplay");
+        let currentTrackIndex = 0;
+
+        window.onload = function() {
+            // Setup music dropdown groups
+            const dropdown = document.getElementById("playlistSelect");
+            const categories = { "Hindi": document.createElement("optgroup"), "Love": document.createElement("optgroup"), "Sad": document.createElement("optgroup") };
+            categories["Hindi"].label = "🇮🇳 HINDI TOP HITS"; categories["Love"].label = "❤️ ROMANTIC LOVE SELECTION"; categories["Sad"].label = "😭 DEEP EMOTIONAL SAD SONGS";
             
-            newPage.document.write(`
-                <!DOCTYPE html>
-                <html lang="hi">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Khas Aapke Liye</title>
-                    <style>
-                        body {
-                            background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
-                            color: #f8fafc;
-                            font-family: 'Segoe UI', Roboto, sans-serif;
-                            min-height: 100vh;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: flex-start;
-                            gap: 30px;
-                            padding: 40px 20px;
-                            margin: 0;
-                        }
-                        .love-card {
-                            max-width: 500px;
-                            width: 100%;
-                            background: rgba(255, 255, 255, 0.03);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            backdrop-filter: blur(12px);
-                            -webkit-backdrop-filter: blur(12px);
-                            padding: 30px;
-                            border-radius: 24px;
-                            text-align: center;
-                            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-                            animation: zoomIn 0.5s ease-out;
-                        }
-                        img {
-                            width: 100%;
-                            height: auto;
-                            border-radius: 16px;
-                            margin-bottom: 25px;
-                            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-                        }
-                        p {
-                            font-size: 1.15rem;
-                            line-height: 1.8;
-                            color: #f1f5f9;
-                            margin: 0;
-                        }
-                        @keyframes zoomIn {
-                            from { opacity: 0; transform: scale(0.95); }
-                            to { opacity: 1; transform: scale(1); }
-                        }
-                    </style>
-                </head>
-                <body>
+            songDatabase.forEach((song, index) => {
+                const option = document.createElement("option"); option.value = index; option.text = song.name;
+                categories[song.type].appendChild(option);
+            });
+            dropdown.appendChild(categories["Hindi"]); dropdown.appendChild(categories["Love"]); dropdown.appendChild(categories["Sad"]);
+            
+            setupTrack(0);
+            displayShayari();
+        };
 
-                    <div class="love-card">
-                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space 1">
-                        <p>
-                            ✨ <b>खास आपके लिए - भाग 1</b> ✨<br><br>
-                            <span style="color: #f472b6; font-style: italic; font-weight: 600; display: block; margin-bottom: 15px;">
-                                "खूबसूरत सा एक पल का किस्सा बन जाता है,<br>
-                                जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
-                                कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
-                                जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"
-                            </span>
-                            ❤️ इस इंटरनेट की दुनिया में आपका मेरे इस छोटे से कोने में आना बेहद खास है।
-                        </p>
-                    </div>
-
-                    <div class="love-card">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop" alt="Love Space 2">
-                        <p>
-                            ✨ <b>खास आपके लिए - भाग 2</b> ✨<br><br>
-                            <span style="color: #f472b6; font-style: italic; font-weight: 600; display: block; margin-bottom: 15px;">
-                                "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,<br>
-                                आँखें बंद करो तो सामने आ जाती है तेरी यादें,<br>
-                                लोग कहते हैं कि सो जाते हैं सब रात में,<br>
-                                पर हमें तो जगा कर चली जाती है तेरी यादें।"
-                            </span>
-                            🌹 ये पल यूँ ही ठहर जाए, बस यही ख्वाहिश है।
-                        </p>
-                    </div>
-
-                </body>
-                </html>
-            `);
-            newPage.document.close();
+        // MUSIC FUNCTIONS
+        function setupTrack(index) {
+            currentTrackIndex = index;
+            audio.src = songDatabase[index].url;
+            trackDisplay.innerHTML = "Selected: " + songDatabase[index].name;
+        }
+        function handleSongChange() {
+            const selectedIdx = document.getElementById("playlistSelect").value;
+            const wasPlaying = !audio.paused;
+            setupTrack(selectedIdx);
+            if (wasPlaying) { audio.play(); playBtn.innerHTML = "⏸ Pause Song"; }
+        }
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play(); playBtn.innerHTML = "⏸ Pause Song";
+                trackDisplay.innerHTML = "Playing: " + songDatabase[currentTrackIndex].name;
+            } else {
+                audio.pause(); playBtn.innerHTML = "▶ Play Song";
+                trackDisplay.innerHTML = "Paused: " + songDatabase[currentTrackIndex].name;
+            }
         }
 
-        // 2. JavaScript function to spawn beautiful background bubbles
+        // SMART SHAYARI FUNCTIONS
+        function displayShayari() {
+            if(filteredShayariList.length === 0) return;
+            const item = filteredShayariList[currentShayariIndex];
+            document.getElementById("shayariText").innerText = item.text;
+            document.getElementById("shayariType").innerText = "✨ Category: " + item.type + " (" + (currentShayariIndex + 1) + "/" + filteredShayariList.length + ") ✨";
+        }
+
+        function nextShayari() {
+            currentShayariIndex = (currentShayariIndex + 1) % filteredShayariList.length;
+            displayShayari();
+        }
+
+        function filterShayari() {
+            const category = document.getElementById("shayariCategorySelect").value;
+            if(category === "all") {
+                filteredShayariList = [...shayariDatabase];
+            } else {
+                filteredShayariList = shayariDatabase.filter(item => item.type.toLowerCase() === category);
+            }
+            currentShayariIndex = 0;
+            displayShayari();
+        }
+
+        // BACKGROUND BUBBLE ENGINE
         function spawnParticle() {
             const particle = document.createElement('div');
             particle.classList.add('bg-particle');
-            
-            // Random size and speed for bubbles
             const size = Math.random() * 22 + 8; 
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
+            particle.style.width = size + 'px'; particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + 'vw';
-            
             const duration = Math.random() * 6 + 6; 
             particle.style.animationDuration = duration + 's';
-            
-            // Premium Glowing Neon Colors (Pink, Purple, Blue)
-            const colors = ['rgba(236, 72, 153, 0.35)', 'rgba(168, 85, 247, 0.35)', 'rgba(99, 102, 241, 0.35)'];
-            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            document.body.appendChild(particle);
-            
-            // Clean up old elements to maintain smooth performance
-            setTimeout(() => {
-                particle.remove();
-            }, duration * 1000);
-        }
-        // Spawn a new bubble every 450ms
-        setInterval(spawnParticle, 450);
-    </script>
-
-</body>
-</html>
+            const colors = ['rgba(236, 72, 153, 0.4)', 'rgba(168, 85, 247, 0.4)', 'rgba(99, 102, 241, 0.4)'];
+            particle.style.ba
