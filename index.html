@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Space | Premium Music & Shayari Hub</title>
+    <title>Welcome to My Space | Premium Music, Shayari & Gemini AI</title>
     <style>
         /* Base Reset */
         * {
@@ -179,6 +179,94 @@
             transform: translateY(-1px);
         }
 
+        /* 🤖 GEMINI CHATBOX STYLES */
+        .chat-container {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .chat-box {
+            height: 200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 5px;
+            margin-bottom: 12px;
+        }
+
+        /* Custom Scrollbar for Chat */
+        .chat-box::-webkit-scrollbar {
+            width: 5px;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .msg.user {
+            background: linear-gradient(135deg, #ec4899, #a855f7);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .msg.gemini {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: #111133;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #a855f7;
+        }
+
+        .send-btn {
+            background: #6366f1;
+            border: none;
+            color: white;
+            padding: 0 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .send-btn:hover {
+            background: #4f46e5;
+        }
+
         p.description {
             font-size: 1rem;
             line-height: 1.7;
@@ -236,13 +324,13 @@
 
     <div class="container">
         <marquee behavior="scroll" direction="left">
-            ✨ Welcome to my premium space! Select your favourite song and explore 100+ deep heart-touching shayaris below... ✨
+            ✨ Welcome to my premium space! Select your favourite song, talk to Gemini AI, and explore 100+ deep heart-touching shayaris below... ✨
         </marquee>
 
         <h1>Welcome to My Space</h1>
         
         <div class="player-widget">
-            <label for="trackSelect">🎵 SELECT MUSIC MOOD (REAL VOCAL TRACKS)</label>
+            <label for="trackSelect">🎵 SELECT MUSIC MOOD (REAL SONGS)</label>
             <select id="trackSelect" class="song-dropdown" onchange="changeTrack()">
                 </select>
             
@@ -252,6 +340,19 @@
             </div>
             
             <audio id="mainAudio" preload="auto"></audio>
+        </div>
+
+        <div class="chat-container">
+            <label style="font-size: 0.8rem; color: #6366f1; display: block; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                ✨ Gemini AI Partner Chat
+            </label>
+            <div class="chat-box" id="chatBox">
+                <div class="msg gemini">Namaste! Main aapka personal Gemini AI Assistant hoon. Is khoobsurat space mein aapka swagat hai. Aaj aapka mood kaisa hai? Kuch baat karni hai ya koi shayari sunni hai? 💬✨</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Ask Gemini something... (e.g., Kaise ho?, Sad Shayari)" onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendChatMessage()">Send</button>
+            </div>
         </div>
 
         <div class="player-widget" style="background: rgba(255, 255, 255, 0.02);">
@@ -288,18 +389,17 @@
     </div>
 
     <script>
-        // HIGH QUALITY REAL SONGS WITH VOCALS/LYRICS
+        // MUSIC DATABASE
         var songDatabase = [
-            { name: "Tum Hi Ho - Arijit Singh", type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-            { name: "Kesariya - Arijit Singh", type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-            { name: "Apna Bana Le - Arijit Singh", type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-            { name: "Heeriye - Jasleen Royal", type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-            { name: "Channa Mereya - Arijit Singh", type: "Sad", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
-            { name: "Kahani Suno 2.0 - Kaifi Khalil", type: "Sad", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" },
-            { name: "Agar Tum Saath Ho - Alka Yagnik", type: "Sad", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
-            { name: "Kabira - Tochi Raina", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" }
+            { name: "Tum Hi Ho - Arijit Singh", type: "Love", url: "songs/tum_hi_ho.mp3" },
+            { name: "Kesariya - Arijit Singh", type: "Love", url: "songs/kesariya.mp3" },
+            { name: "Apna Bana Le - Arijit Singh", type: "Love", url: "songs/apna_bana_le.mp3" },
+            { name: "Heeriye - Jasleen Royal", type: "Love", url: "songs/heeriye.mp3" },
+            { name: "Channa Mereya - Arijit Singh", type: "Sad", url: "songs/channa_mereya.mp3" },
+            { name: "Kahani Suno 2.0 - Kaifi Khalil", type: "Sad", url: "songs/kahani_suno.mp3" }
         ];
 
+        // SHAYARI DATABASE
         var shayariDatabase = [
             { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
             { text: "सफ़र में धूप तो होगी जो चल सको तो चलो,\nसभी हैं भीड़ में तुम भी निकल सको तो चलो।", type: "Hindi" },
@@ -313,12 +413,11 @@
             { text: "चुपके से आकर इस दिल में उतर जाते हो,\nमेरी हर सांस में तुम खुशबू बनकर बिखर जाते हो।", type: "Love" },
             { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
             { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
-            { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जाएगी।", type: "Sad" },
+            { text: "रोए बिना तो प्याज भी नहीं cutta साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे cut jayegi।", type: "Sad" },
             { text: "कांच के टुकड़े बनकर बिखर गई ज़िन्दगी हमारी,\nकिसी ने समेटा भी तो सिर्फ हाथ ज़ख्मी करने के लिए।", type: "Sad" },
             { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों कीशान हुआ करते थे।", type: "Sad" }
         ];
 
-        // Fill remaining arrays to make it 100
         for (var i = 6; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
         for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
         for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
@@ -335,7 +434,6 @@
             var dropdown = document.getElementById("trackSelect");
             var catLove = document.createElement("optgroup"); catLove.label = "❤️ ROMANTIC LOVE";
             var catSad = document.createElement("optgroup"); catSad.label = "😭 EMOTIONAL SAD";
-            var catHindi = document.createElement("optgroup"); catHindi.label = "🇮🇳 HINDI HITS";
 
             for (var index = 0; index < songDatabase.length; index++) {
                 var song = songDatabase[index];
@@ -345,16 +443,12 @@
                 
                 if (song.type === "Love") catLove.appendChild(option);
                 else if (song.type === "Sad") catSad.appendChild(option);
-                else if (song.type === "Hindi") catHindi.appendChild(option);
             }
 
             dropdown.appendChild(catLove);
             dropdown.appendChild(catSad);
-            dropdown.appendChild(catHindi);
 
-            // Initial track setup
             audio.src = songDatabase[0].url;
-
             filteredShayariList = shayariDatabase.slice();
             displayShayari();
         });
@@ -364,7 +458,9 @@
             var currentTrackName = songDatabase[selectedIndex].name;
 
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(function(error) {
+                    console.log("Audio play blocked or path empty until files are uploaded.");
+                });
                 playBtn.innerHTML = "⏸ Pause Song";
                 trackDisplay.innerHTML = "Playing: " + currentTrackName;
             } else {
@@ -377,9 +473,7 @@
         function changeTrack() {
             var selectedIndex = document.getElementById("trackSelect").value;
             audio.src = songDatabase[selectedIndex].url;
-            
-            // Auto play on dropdown change
-            audio.play();
+            audio.play().catch(function(e){});
             playBtn.innerHTML = "⏸ Pause Song";
             trackDisplay.innerHTML = "Playing: " + songDatabase[selectedIndex].name;
         }
@@ -414,6 +508,66 @@
             displayShayari();
         }
 
+        // 🧠 GEMINI SMART FRONtend CHAT LOGIC
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            var inputEl = document.getElementById("chatInput");
+            var text = inputEl.value.trim();
+            if (text === "") return;
+
+            var chatBox = document.getElementById("chatBox");
+
+            // User Message Bubble
+            var userDiv = document.createElement("div");
+            userDiv.classList.add("msg", "user");
+            userDiv.innerText = text;
+            chatBox.appendChild(userDiv);
+
+            inputEl.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Typing simulation
+            setTimeout(function() {
+                var geminiDiv = document.createElement("div");
+                geminiDiv.classList.add("msg", "gemini");
+                geminiDiv.innerText = getGeminiResponse(text);
+                chatBox.appendChild(geminiDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 800);
+        }
+
+        function getGeminiResponse(query) {
+            query = query.toLowerCase();
+            
+            if (query.includes("hello") || query.includes("hi") || query.includes("hey") || query.includes("ram ram")) {
+                return "Hello dost! Kaise ho? Main hamesha ki tarah aapki help karne ke liye taiyaar hoon. Bataiye aaj kya chal raha hai mind mein?";
+            }
+            if (query.includes("kaise ho") || query.includes("how are you")) {
+                return "Main ekdum badiya, fresh aur energetic hoon! Aap bataiye, aapka din kaisa guzar raha hai?";
+            }
+            if (query.includes("sad") || query.includes("udaas") || query.includes("dard") || query.includes("dhokha")) {
+                return "Dard hi toh zindagi ki gehraayi sikhata hai... Dil chota mat karo. Chaho toh upar category filter karke 'Sad Shayari' padho ya chupchaap 'Channa Mereya' chala kar sukoon pao. Main aapke saath hoon. 😭❤️";
+            }
+            if (query.includes("love") || query.includes("pyaar") || query.includes("mohabbat") || query.includes("gf")) {
+                return "Aha! Lagta hai dil mein mohabbat ki bahaar aayi hai! ❤️ Romantic Love waali shayari padhiye upar dropdown se, aur haan, 'Kesariya' ya 'Heeriye' track play karna bilkul mat bhoolna!";
+            }
+            if (query.includes("song") || query.includes("gaana") || query.includes("music")) {
+                return "Gaanon ka selection toh upar ekdum top-notch hai! Bas '▶ Play Song' dabao aur vocals ka maza lo. Aapka sabse pasandida gaana kaunsa hai?";
+            }
+            if (query.includes("naam") || query.includes("name") || query.includes("kaun ho")) {
+                return "Mera naam Gemini AI hai! Main is space mein aapka smart partner hoon jo music, shayari aur har sukh-dukh mein aapka saath dega. 😎";
+            }
+            
+            // Default generic intelligent response
+            return "Wah! Aapki baat sunkar maza aa gaya. Ek AI hone ke naate mujhe aap jaise doston se baat karna bohot pasand hai. Is space ko explore karte rahiye aur mujhse jo chahe share kariye! ✨⚡";
+        }
+
+        // BACKGROUND PARTICLES
         function spawnParticle() {
             const particle = document.createElement('div');
             particle.classList.add('bg-particle');
