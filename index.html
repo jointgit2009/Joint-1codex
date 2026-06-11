@@ -14,7 +14,6 @@
         }
 
         body {
-            /* Dynamic Gradient Background Animation */
             background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -29,7 +28,7 @@
             position: relative;
         }
 
-        /* Glassmorphic Card (Main Box) */
+        /* Glassmorphic Card */
         .container {
             max-width: 650px;
             width: 100%;
@@ -45,7 +44,6 @@
             z-index: 2;
         }
 
-        /* Top Running Banner */
         marquee {
             color: #ec4899;
             font-weight: bold;
@@ -57,7 +55,6 @@
             display: block;
         }
 
-        /* Main Title */
         h1 {
             font-size: 2.3rem;
             font-weight: 800;
@@ -67,7 +64,7 @@
             margin-bottom: 20px;
         }
 
-        /* 🎵 Advanced Music Player Widget */
+        /* Widgets */
         .player-widget {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -89,12 +86,12 @@
 
         .song-dropdown, .shayari-dropdown {
             width: 100%;
-            padding: 10px;
-            background: #1e1b4b;
+            padding: 12px;
+            background: #111133;
             color: #f8fafc;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
             cursor: pointer;
             margin-bottom: 10px;
@@ -111,11 +108,11 @@
             background: linear-gradient(to right, #ec4899, #a855f7);
             border: none;
             color: white;
-            padding: 8px 18px;
+            padding: 10px 22px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
@@ -125,7 +122,7 @@
         }
 
         .now-playing {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #cbd5e1;
             white-space: nowrap;
             overflow: hidden;
@@ -133,20 +130,19 @@
             max-width: 280px;
         }
 
-        /* 📜 100 SHAYARI DISPLAY BOX */
+        /* Shayari Display Box */
         .shayari-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 25px;
             border-radius: 16px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
             min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
         }
 
         .shayari-content {
@@ -156,6 +152,7 @@
             font-style: italic;
             margin-bottom: 15px;
             white-space: pre-line;
+            text-align: center;
         }
 
         .shayari-meta {
@@ -166,7 +163,6 @@
             letter-spacing: 1px;
         }
 
-        /* Description Paragraph */
         p.description {
             font-size: 1rem;
             line-height: 1.7;
@@ -175,7 +171,6 @@
             text-align: justify;
         }
 
-        /* 💰 Income/Freelance Branding Footer */
         .monetize-footer {
             margin-top: 25px;
             z-index: 2;
@@ -187,46 +182,24 @@
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .monetize-footer a {
-            color: #f472b6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .monetize-footer a:hover {
-            text-decoration: underline;
-        }
+        .monetize-footer a { color: #f472b6; text-decoration: none; font-weight: 600; }
+        .monetize-footer a:hover { text-decoration: underline; }
 
-        /* 📢 Placeholder Space for Future Ads */
         .ad-space {
-            width: 100%;
-            max-width: 650px;
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: #64748b;
-            text-align: center;
-            z-index: 2;
+            width: 100%; max-width: 650px; margin-top: 20px;
+            background: rgba(255, 255, 255, 0.01); border: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 10px; border-radius: 12px; font-size: 0.8rem; color: #64748b; text-align: center; z-index: 2;
         }
 
-        /* Background Gradient Wave Motion */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* ✨ FLOATING BUBBLES ANIMATION STYLE ✨ */
         .bg-particle {
-            position: fixed;
-            bottom: -20px;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatUp linear infinite;
-            z-index: 1;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            position: fixed; bottom: -20px; border-radius: 50%; pointer-events: none;
+            animation: floatUp linear infinite; z-index: 1; box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         @keyframes floatUp {
@@ -260,7 +233,7 @@
                 </select>
             <div class="player-controls">
                 <button class="play-music-btn" id="playBtn" onclick="toggleAudio()">▶ Play Song</button>
-                <div class="now-playing" id="trackNameDisplay">Status: Stopped</div>
+                <div class="now-playing" id="trackNameDisplay">Status: Initializing...</div>
             </div>
         </div>
 
@@ -298,9 +271,8 @@
     </div>
 
     <script>
-        // 🎵 50 SONGS DATA
-        const songDatabase = [
-            // 10 Hindi Hits
+        // FOOLPROOF DATA ARRAYS
+        var songDatabase = [
             { name: "Tum Hi Ho - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
             { name: "Channa Mereya - Ae Dil Hai Mushkil", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
             { name: "Kesariya - Brahmastra", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
@@ -310,16 +282,19 @@
             { name: "Dil Diyan Gallan - Salman Khan", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
             { name: "Raatan Lambiyan - Shershaah", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
             { name: "Apna Bana Le - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" },
-            { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" },
-            // 20 Love Tracks
-            ...Array.from({length: 20}, (_, i) => ({ name: `Premium Romantic Melody ${i+1}`, type: "Love", url: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${(i%16)+1}.mp3` })),
-            // 20 Sad Tracks
-            ...Array.from({length: 20}, (_, i) => ({ name: `Emotional Deep Track ${i+1}`, type: "Sad", url: `https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${(i%16)+1}.mp3` }))
+            { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" }
         ];
 
-        // 📜 100 SHAYARI DATA COMPACT PACK
-        const shayariDatabase = [
-            // 20 HINDI / LIFE SHAYARI
+        // Loop population for 50 tracks (Safest browser method)
+        for (var i = 1; i <= 20; i++) {
+            songDatabase.push({ name: "Premium Romantic Melody " + i, type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-" + ((i % 15) + 1) + ".mp3" });
+        }
+        for (var i = 1; i <= 20; i++) {
+            songDatabase.push({ name: "Emotional Deep Track " + i, type: "Sad", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-" + ((i % 15) + 2) + ".mp3" });
+        }
+
+        var shayariDatabase = [
+            // Hindi / Life
             { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
             { text: "सफ़र में धूप तो होगी जो चल सको तो चलो,\nसभी हैं भीड़ में तुम भी निकल सको तो चलो।", type: "Hindi" },
             { text: "खुद से भी हार कर देख लिया मैंने,\nअब तो किस्मत का ही पलटना बाकी है।", type: "Hindi" },
@@ -330,9 +305,7 @@
             { text: "मुस्कुराओ क्या गम है, ज़िन्दगी में टेंशन किसको कम है,\nअच्छा या बुरा तो केवल भ्रम है, ज़िन्दगी का नाम ही कभी ख़ुशी कभी गम है।", type: "Hindi" },
             { text: "उड़ान तो भरनी है चाहे कई बार गिरना पड़े,\nसपनों को पूरा करना है चाहे खुद से भी लड़ना पड़े।", type: "Hindi" },
             { text: "पीठ हमेशा मजबूत रखनी चाहिए क्यूंकि,\nशाबाशी और धोखा दोनों पीछे से ही मिलते हैं।", type: "Hindi" },
-            ...Array.from({length: 10}, (_, i) => ({ text: `ज़िंदगी का सफ़र यूँ ही चलता रहेगा ${i+1},\nवक़्त के साए में हर कोई ढलता रहेगा।`, type: "Hindi" })),
-
-            // 40 LOVE SHAYARI
+            // Love
             { text: "खूबसूरत सा एक पल का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
             { text: "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,\nआँखें बंद करो तो सामने आ जाती है तेरी यादें।", type: "Love" },
             { text: "न जाने कैसा ये तीर जिगर के पार हुआ,\nतुमसे मिले नहीं और तुमसे अटूट प्यार हुआ।", type: "Love" },
@@ -343,9 +316,7 @@
             { text: "इश्क है या इबादत अब कुछ समझ नहीं आता,\nएक तुमको देखने के बाद कोई और नजर नहीं आता।", type: "Love" },
             { text: "रब से आपकी खुशी मांगते हैं,\nदुआओं में आपकी हंसी मांगते हैं।", type: "Love" },
             { text: "बस एक छोटा सा ख्वाब है मेरा,\nहाथों में हाथ हो तेरा और साथ हो पूरा।", type: "Love" },
-            ...Array.from({length: 30}, (_, i) => ({ text: `तुम्हारी आँखों में डूब जाने को जी चाहता है ${i+1},\nतुम्हें अपना बनाकर उम्र भर निभाने को जी चाहता है।`, type: "Love" })),
-
-            // 40 SAD SHAYARI
+            // Sad
             { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
             { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
             { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जाएगी।", type: "Sad" },
@@ -354,89 +325,118 @@
             { text: "मुस्कुरा देता हूँ अक्सर देखकर पुराने मैसेज,\nकि कभी कोई शख्स मेरी परवाह खुद से ज्यादा करता था।", type: "Sad" },
             { text: "दर्द छुपाना सीख लिया मैंने,\nअब हर बात पर मुस्कुराना सीख लिया मैंने।", type: "Sad" },
             { text: "तूने तो कह दिया कि अब कोई वास्ता नहीं,\nपर इस टूटे दिल का तेरे सिवा कोई रास्ता नहीं।", type: "Sad" },
-            { text: "मोहब्बत का जनाज़ा उठा है आज बड़ी धूमधाम से,\nवफ़ा कफ़न ओढ़े सो रही है बड़े आराम से।", type: "Sad" },
-            { text: "अब मत खोलना मेरी ज़िन्दगी की पुरानी किताबों को,\nजो था वो मैं रहा नहीं, जो हूँ वो किसी को पता नहीं।", type: "Sad" },
-            ...Array.from({length: 30}, (_, i) => ({ text: `ये उदास रातें और ये दर्द का साया ${i+1},\nउसने भुला दिया हमें जिसे हमने अपना बनाया।`, type: "Sad" }))
+            { text: "मोहब्बत का janaaza उठा है आज बड़ी धूमधाम से,\nवफ़ा कफ़न ओढ़े सो रही है बड़े आराम से।", type: "Sad" },
+            { text: "अब मत खोलना मेरी ज़िन्दगी की पुरानी किताबों को,\nजो था वो मैं रहा नहीं, जो हूँ वो किसी को पता नहीं।", type: "Sad" }
         ];
 
-        // INITIALIZER LOGIC
-        let filteredShayariList = [...shayariDatabase];
-        let currentShayariIndex = 0;
-        const audio = document.getElementById("audioEngine");
-        const playBtn = document.getElementById("playBtn");
-        const trackDisplay = document.getElementById("trackNameDisplay");
-        let currentTrackIndex = 0;
+        // Fill remaining up to 100 entries cleanly
+        for (var i = 11; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
+        for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
+        for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
 
-        window.onload = function() {
-            // Setup music dropdown groups
-            const dropdown = document.getElementById("playlistSelect");
-            const categories = { "Hindi": document.createElement("optgroup"), "Love": document.createElement("optgroup"), "Sad": document.createElement("optgroup") };
-            categories["Hindi"].label = "🇮🇳 HINDI TOP HITS"; categories["Love"].label = "❤️ ROMANTIC LOVE SELECTION"; categories["Sad"].label = "😭 DEEP EMOTIONAL SAD SONGS";
+        // ENGINE SYSTEM Variables
+        var filteredShayariList = [];
+        var currentShayariIndex = 0;
+        var audio = null;
+        var playBtn = null;
+        var trackDisplay = null;
+        var currentTrackIndex = 0;
+
+        // INSTANT SPEED LOAD ENGINE (Replaces window.onload)
+        document.addEventListener("DOMContentLoaded", function() {
+            audio = document.getElementById("audioEngine");
+            playBtn = document.getElementById("playBtn");
+            trackDisplay = document.getElementById("trackNameDisplay");
             
-            songDatabase.forEach((song, index) => {
-                const option = document.createElement("option"); option.value = index; option.text = song.name;
-                categories[song.type].appendChild(option);
-            });
-            dropdown.appendChild(categories["Hindi"]); dropdown.appendChild(categories["Love"]); dropdown.appendChild(categories["Sad"]);
-            
+            var dropdown = document.getElementById("playlistSelect");
+            var catHindi = document.createElement("optgroup"); catHindi.label = "🇮🇳 HINDI TOP HITS";
+            var catLove = document.createElement("optgroup"); catLove.label = "❤️ ROMANTIC LOVE SELECTION";
+            var catSad = document.createElement("optgroup"); catSad.label = "😭 DEEP EMOTIONAL SAD SONGS";
+
+            for (var index = 0; index < songDatabase.length; index++) {
+                var song = songDatabase[index];
+                var option = document.createElement("option");
+                option.value = index;
+                option.text = song.name;
+                
+                if (song.type === "Hindi") catHindi.appendChild(option);
+                else if (song.type === "Love") catLove.appendChild(option);
+                else if (song.type === "Sad") catSad.appendChild(option);
+            }
+
+            dropdown.appendChild(catHindi);
+            dropdown.appendChild(catLove);
+            dropdown.appendChild(catSad);
+
             setupTrack(0);
+            filteredShayariList = shayariDatabase.slice();
             displayShayari();
-        };
+        });
 
-        // MUSIC FUNCTIONS
+        // MUSIC ACTIONS
         function setupTrack(index) {
-            currentTrackIndex = index;
-            audio.src = songDatabase[index].url;
-            trackDisplay.innerHTML = "Selected: " + songDatabase[index].name;
+            currentTrackIndex = parseInt(index);
+            audio.src = songDatabase[currentTrackIndex].url;
+            trackDisplay.innerHTML = "Selected: " + songDatabase[currentTrackIndex].name;
         }
+
         function handleSongChange() {
-            const selectedIdx = document.getElementById("playlistSelect").value;
-            const wasPlaying = !audio.paused;
+            var selectedIdx = document.getElementById("playlistSelect").value;
+            var wasPlaying = !audio.paused;
             setupTrack(selectedIdx);
-            if (wasPlaying) { audio.play(); playBtn.innerHTML = "⏸ Pause Song"; }
+            if (wasPlaying) {
+                audio.play();
+                playBtn.innerHTML = "⏸ Pause Song";
+            }
         }
+
         function toggleAudio() {
             if (audio.paused) {
-                audio.play(); playBtn.innerHTML = "⏸ Pause Song";
+                audio.play();
+                playBtn.innerHTML = "⏸ Pause Song";
                 trackDisplay.innerHTML = "Playing: " + songDatabase[currentTrackIndex].name;
             } else {
-                audio.pause(); playBtn.innerHTML = "▶ Play Song";
+                audio.pause();
+                playBtn.innerHTML = "▶ Play Song";
                 trackDisplay.innerHTML = "Paused: " + songDatabase[currentTrackIndex].name;
             }
         }
 
-        // SMART SHAYARI FUNCTIONS
+        // SHAYARI ACTIONS
         function displayShayari() {
-            if(filteredShayariList.length === 0) return;
-            const item = filteredShayariList[currentShayariIndex];
+            if (filteredShayariList.length === 0) return;
+            var item = filteredShayariList[currentShayariIndex];
             document.getElementById("shayariText").innerText = item.text;
             document.getElementById("shayariType").innerText = "✨ Category: " + item.type + " (" + (currentShayariIndex + 1) + "/" + filteredShayariList.length + ") ✨";
         }
 
         function nextShayari() {
+            if (filteredShayariList.length === 0) return;
             currentShayariIndex = (currentShayariIndex + 1) % filteredShayariList.length;
             displayShayari();
         }
 
         function filterShayari() {
-            const category = document.getElementById("shayariCategorySelect").value;
-            if(category === "all") {
-                filteredShayariList = [...shayariDatabase];
+            var category = document.getElementById("shayariCategorySelect").value;
+            if (category === "all") {
+                filteredShayariList = shayariDatabase.slice();
             } else {
-                filteredShayariList = shayariDatabase.filter(item => item.type.toLowerCase() === category);
+                filteredShayariList = [];
+                for (var i = 0; i < shayariDatabase.length; i++) {
+                    if (shayariDatabase[i].type.toLowerCase() === category) {
+                        filteredShayariList.push(shayariDatabase[i]);
+                    }
+                }
             }
             currentShayariIndex = 0;
             displayShayari();
         }
 
-        // BACKGROUND BUBBLE ENGINE
+        // FLOATING BACKGROUND
         function spawnParticle() {
             const particle = document.createElement('div');
             particle.classList.add('bg-particle');
-            const size = Math.random() * 22 + 8; 
-            particle.style.width = size + 'px'; particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + 'vw';
-            const duration = Math.random() * 6 + 6; 
-            particle.style.animationDuration = duration + 's';
-            const colors = ['rgba(236, 72, 153, 0.4)', 'rgba(168, 85, 247, 0.4)', 'rgba(99, 102, 241, 0.4)'];
-            particle.style.ba
+            const size = Math.random() * 22 + 8;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 10
