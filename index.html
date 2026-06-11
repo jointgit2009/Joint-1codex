@@ -132,6 +132,38 @@
     </p>
 </div>
     </p>
+                <button class="btn" onclick="playStory()" style="margin-top: 15px;">Connect With Me</button>
+
+        <div id="secretStory" style="display: none; margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
+            
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);">
+            
+            <p style="font-size: 1.1rem; color: #f1f5f9; line-height: 1.7; text-align: center; font-style: normal;">
+                ✨ <b>खास आपके लिए</b> ✨<br><br>
+                <i style="color: #f472b6;">"خوبصورت سا ایک پل کا قصہ بن جاتا ہے،<br>
+                जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
+                कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
+                जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"</i><br><br>
+                ❤️ इस इंटरनेट की दुनिया में आपका मेरे इस छोटे से कोने में आना और वक्त बिताना मेरे लिए बेहद खास है। थैंक यू!
+            </p>
+        </div>
+
+    </div> <script>
+        function playStory() {
+            var storyBox = document.getElementById("secretStory");
+            if (storyBox.style.display === "none" || storyBox.style.display === "") {
+                storyBox.style.display = "block";
+                storyBox.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                storyBox.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+        
         <a href="#" class="btn">Connect With Me</a>
     </div>
     <script>
