@@ -41,7 +41,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
-        /* Running Text */
+        /* Running Text Banner */
         marquee {
             color: #ec4899;
             font-weight: bold;
@@ -94,25 +94,6 @@
             background: linear-gradient(to right, #a855f7, #ec4899);
         }
 
-        /* Secret Love Box */
-        #secretStory {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-        .story-img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        }
-
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -140,32 +121,83 @@
         </p>
         
         <button class="btn" onclick="playStory()">Connect With Me</button>
-
-        <div id="secretStory">
-            <img class="story-img" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space">
-            
-            <p style="font-size: 1.1rem; color: #f1f5f9; line-height: 1.7; text-align: center;">
-                ✨ <b>खास आपके लिए</b> ✨<br><br>
-                <span style="color: #f472b6; font-style: italic; font-weight: 600;">
-                    "खूबसूरत सा एक पल का किस्सा बन जाता है,<br>
-                    जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
-                    कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
-                    जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"
-                </span><br><br>
-                ❤️ इस इंटरनेट की दुनिया में आपका मेरे इस छोटे से कोने में आना और वक्त बिताना मेरे लिए बेहद खास है। थैंक यू!
-            </p>
-        </div>
     </div>
 
     <script>
         function playStory() {
-            var storyBox = document.getElementById("secretStory");
-            if (storyBox.style.display === "none" || storyBox.style.display === "") {
-                storyBox.style.display = "block";
-                storyBox.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                storyBox.style.display = "none";
-            }
+            // Opens a brand new blank tab
+            var newPage = window.open("", "_blank");
+            
+            // Writing the fully designed love page structure into that new tab
+            newPage.document.write(`
+                <!DOCTYPE html>
+                <html lang="hi">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Khas Aapke Liye</title>
+                    <style>
+                        body {
+                            background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
+                            color: #f8fafc;
+                            font-family: 'Segoe UI', Roboto, sans-serif;
+                            min-height: 100vh;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 20px;
+                            margin: 0;
+                        }
+                        .love-card {
+                            max-width: 500px;
+                            width: 100%;
+                            background: rgba(255, 255, 255, 0.03);
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            backdrop-filter: blur(12px);
+                            -webkit-backdrop-filter: blur(12px);
+                            padding: 30px;
+                            border-radius: 24px;
+                            text-align: center;
+                            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+                            animation: zoomIn 0.5s ease-out;
+                        }
+                        img {
+                            width: 100%;
+                            height: auto;
+                            border-radius: 16px;
+                            margin-bottom: 25px;
+                            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+                        }
+                        p {
+                            font-size: 1.15rem;
+                            line-height: 1.8;
+                            color: #f1f5f9;
+                        }
+                        @keyframes zoomIn {
+                            from { opacity: 0; transform: scale(0.95); }
+                            to { opacity: 1; transform: scale(1); }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="love-card">
+                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space">
+                        
+                        <p>
+                            ✨ <b>खास आपके लिए</b> ✨<br><br>
+                            <span style="color: #f472b6; font-style: italic; font-weight: 600; display: block; margin-bottom: 15px;">
+                                "खूबसूरत सा एक पल का किस्सा बन जाता है,<br>
+                                जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
+                                कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
+                                जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"
+                            </span>
+                            ❤️ इस इंटरनेट की दुनिया में आपका मेरे इस छोटे से कोने में आना और वक्त बिताना मेरे लिए बेहद खास है। थैंक यू!
+                        </p>
+                    </div>
+                </body>
+                </html>
+            `);
+            newPage.document.close();
         }
     </script>
 
