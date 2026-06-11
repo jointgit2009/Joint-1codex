@@ -285,7 +285,6 @@
             { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" }
         ];
 
-        // Loop population for 50 tracks (Safest browser method)
         for (var i = 1; i <= 20; i++) {
             songDatabase.push({ name: "Premium Romantic Melody " + i, type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-" + ((i % 15) + 1) + ".mp3" });
         }
@@ -294,7 +293,6 @@
         }
 
         var shayariDatabase = [
-            // Hindi / Life
             { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
             { text: "सफ़र में धूप तो होगी जो चल सको तो चलो,\nसभी हैं भीड़ में तुम भी निकल सको तो चलो।", type: "Hindi" },
             { text: "खुद से भी हार कर देख लिया मैंने,\nअब तो किस्मत का ही पलटना बाकी है।", type: "Hindi" },
@@ -305,8 +303,7 @@
             { text: "मुस्कुराओ क्या गम है, ज़िन्दगी में टेंशन किसको कम है,\nअच्छा या बुरा तो केवल भ्रम है, ज़िन्दगी का नाम ही कभी ख़ुशी कभी गम है।", type: "Hindi" },
             { text: "उड़ान तो भरनी है चाहे कई बार गिरना पड़े,\nसपनों को पूरा करना है चाहे खुद से भी लड़ना पड़े।", type: "Hindi" },
             { text: "पीठ हमेशा मजबूत रखनी चाहिए क्यूंकि,\nशाबाशी और धोखा दोनों पीछे से ही मिलते हैं।", type: "Hindi" },
-            // Love
-            { text: "खूबसूरत सा एक पल का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
+            { text: "खूबसूरत सा एक pfal का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
             { text: "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,\nआँखें बंद करो तो सामने आ जाती है तेरी यादें।", type: "Love" },
             { text: "न जाने कैसा ये तीर जिगर के पार हुआ,\nतुमसे मिले नहीं और तुमसे अटूट प्यार हुआ।", type: "Love" },
             { text: "तेरी सादगी का कोई जवाब नहीं है,\nतू वो खूबसूरत सच है जिसका कोई ख्वाब नहीं है।", type: "Love" },
@@ -314,9 +311,8 @@
             { text: "दिल की धड़कन बनकर दिल में रहोगे तुम,\nजब तक सांस है मेरी, पास रहोगे तुम।", type: "Love" },
             { text: "तेरी यादों की महक से महकती है मेरी तन्हाई,\nसोचो कितना खूबसूरत होगा जब तुम साथ आओगे।", type: "Love" },
             { text: "इश्क है या इबादत अब कुछ समझ नहीं आता,\nएक तुमको देखने के बाद कोई और नजर नहीं आता।", type: "Love" },
-            { text: "रब से आपकी खुशी मांगते हैं,\nदुआओं में आपकी हंसी मांगते हैं।", type: "Love" },
+            { text: "रब से आपकी खुशी मांगते हैं,\nदuaओं में आपकी हंसी मांगते हैं।", type: "Love" },
             { text: "बस एक छोटा सा ख्वाब है मेरा,\nहाथों में हाथ हो तेरा और साथ हो पूरा।", type: "Love" },
-            // Sad
             { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
             { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
             { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जाएगी।", type: "Sad" },
@@ -329,12 +325,10 @@
             { text: "अब मत खोलना मेरी ज़िन्दगी की पुरानी किताबों को,\nजो था वो मैं रहा नहीं, जो हूँ वो किसी को पता नहीं।", type: "Sad" }
         ];
 
-        // Fill remaining up to 100 entries cleanly
         for (var i = 11; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
         for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
         for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
 
-        // ENGINE SYSTEM Variables
         var filteredShayariList = [];
         var currentShayariIndex = 0;
         var audio = null;
@@ -342,7 +336,6 @@
         var trackDisplay = null;
         var currentTrackIndex = 0;
 
-        // INSTANT SPEED LOAD ENGINE (Replaces window.onload)
         document.addEventListener("DOMContentLoaded", function() {
             audio = document.getElementById("audioEngine");
             playBtn = document.getElementById("playBtn");
@@ -373,7 +366,6 @@
             displayShayari();
         });
 
-        // MUSIC ACTIONS
         function setupTrack(index) {
             currentTrackIndex = parseInt(index);
             audio.src = songDatabase[currentTrackIndex].url;
@@ -402,12 +394,13 @@
             }
         }
 
-        // SHAYARI ACTIONS
+        // FIXED ONE-LINE FUNCTION (NO BROKEN LINES)
         function displayShayari() {
             if (filteredShayariList.length === 0) return;
             var item = filteredShayariList[currentShayariIndex];
             document.getElementById("shayariText").innerText = item.text;
-            document.getElementById("shayariType").innerText = "✨ Category: " + item.type + " (" + (currentShayariIndex + 1) + "/" + filteredShayariList.length + ") ✨";
+            var metaText = "✨ Category: " + item.type + " (" + (currentShayariIndex + 1) + "/" + filteredShayariList.length + ") ✨";
+            document.getElementById("shayariType").innerText = metaText;
         }
 
         function nextShayari() {
@@ -432,11 +425,21 @@
             displayShayari();
         }
 
-        // FLOATING BACKGROUND
         function spawnParticle() {
             const particle = document.createElement('div');
             particle.classList.add('bg-particle');
             const size = Math.random() * 22 + 8;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 10
+            particle.style.left = Math.random() * 100 + 'vw';
+            const duration = Math.random() * 6 + 6;
+            particle.style.animationDuration = duration + 's';
+                    const colors = ['rgba(236, 72, 153, 0.4)', 'rgba(168, 85, 247, 0.4)', 'rgba(99, 102, 241, 0.4)'];
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(particle);
+        setTimeout(() => { particle.remove(); }, duration * 1000);
+    }
+    setInterval(spawnParticle, 400);
+</script>
+</body>
+</html>
