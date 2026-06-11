@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Space</title>
     <style>
-        /* Modern Premium Styling */
+        /* Base Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            /* Beautiful Dark Gradient Background */
+            /* Animated Deep Gradient Background */
             background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -24,9 +24,10 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Glassmorphism Card Effect */
+        /* Glassmorphism Container Card */
         .container {
             max-width: 600px;
             width: 100%;
@@ -38,43 +39,53 @@
             border-radius: 24px;
             text-align: center;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            animation: fadeInUp 1.2s ease-out;
         }
 
-        /* Glowing Gradient Heading */
-        
-      h1 {
+        /* Running Text */
+        marquee {
+            color: #ec4899;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 50px;
+            display: block;
+        }
+
+        /* Heading */
+        h1 {
             font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            letter-spacing: -0.5px;
         }
 
-        /* Emotional Story Text Styling */
-        p {
+        /* Full Paragraph Text */
+        p.description {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             text-align: justify;
-            text-justify: inter-word;
         }
 
-        /* Interactive Stylish Button */
+        /* Single Premium Button */
         .btn {
             display: inline-block;
             padding: 14px 35px;
             background: linear-gradient(to right, #6366f1, #a855f7);
             color: #ffffff;
-            text-decoration: none;
+            border: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
+            cursor: pointer;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
             transition: all 0.3s ease;
+            margin: 15px auto;
         }
 
         .btn:hover {
@@ -83,72 +94,70 @@
             background: linear-gradient(to right, #a855f7, #ec4899);
         }
 
-        /* Smooth Animations */
+        /* Secret Love Box */
+        #secretStory {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .story-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Optimization */
         @media (max-width: 480px) {
             h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
             .container { padding: 30px 20px; }
+            p.description { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <marquee behavior="scroll" direction="left" style="color: #ec4899; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 50px; display: block;">
-    ✨ Welcome to my official creative space! Click the button below to unlock a secret story... ✨
+        <marquee behavior="scroll" direction="left">
+            ✨ Welcome to my official creative space! Click the button below to unlock a secret story... ✨
         </marquee>
-        
+
         <h1>Welcome to My Space</h1>
-        <p>इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है। हम चाहे एक-दूसरे को जानते हों या नहीं, लेकिन इस पल में आप मेरी दुनिया का एक हिस्सा हैं। थोड़ी देर यहाँ रुकिए, सुकून महसूस कीजिए, क्योंकि शायद आपको अपने ही दिल का कोई कोना यहाँ मिल जाए। आपका यहाँ होना मेरे हौसले को दोगुना करता है।
-       <button class="btn" onclick="playStory()">Connect With Me</button>
+        
+        <p class="description">
+            इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है। हम चाहे एक-दूसरे को जानते हों या नहीं, लेकिन इस पल में आप मेरी दुनिया का एक हिस्सा हैं। थोड़ी देर यहाँ रुकिए, सुकून महसूस कीजिए, क्योंकि शायद आपको अपने ही दिल का कोई कोना यहाँ मिल जाए। आपका यहाँ होना मेरे हौसले को दोगुना करता है।
+        </p>
+        
+        <button class="btn" onclick="playStory()">Connect With Me</button>
 
-<div id="secretStory" style="display: none; margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
-    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop" alt="Creative Workspace" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);">
-    <p style="font-size: 1.1rem; color: #f1f5f9; line-height: 1.7; text-align: center;">
-        ✨ <b>दिल की बात</b> ✨<br><br>
-        <i>"सफ़र की हद वहाँ तक है जहाँ तक कुछ निशान रहे,<br>
-        चले चलो कि जहाँ तक ये आसमान रहे...<br>
-        ये क्या उठाए कदम और आ गई मंज़िल,<br>
-        मज़ा तो तब है जब पैरों में कुछ थकान रहे।"</i><br><br>
-        ❤️ कोडिंग का यह सफ़र भी कुछ ऐसा ही है, हर ग़लती एक नई कहानी और हर सफ़लता एक नया हौसला देती है। मेरी इस छोटी सी दुनिया का हिस्सा बनने के लिए शुक्रिया!
-    </p>
-</div>
-    </p>
-                <button class="btn" onclick="playStory()" style="margin-top: 15px;">Connect With Me</button>
-
-        <div id="secretStory" style="display: none; margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px dashed rgba(255, 255, 255, 0.2); text-align: center;">
+        <div id="secretStory">
+            <img class="story-img" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space">
             
-            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop" alt="Love Space" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);">
-            
-            <p style="font-size: 1.1rem; color: #f1f5f9; line-height: 1.7; text-align: center; font-style: normal;">
+            <p style="font-size: 1.1rem; color: #f1f5f9; line-height: 1.7; text-align: center;">
                 ✨ <b>खास आपके लिए</b> ✨<br><br>
-                <i style="color: #f472b6;">"خوبصورت سا ایک پل کا قصہ بن جاتا ہے،<br>
-                जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
-                कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
-                जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"</i><br><br>
+                <span style="color: #f472b6; font-style: italic; font-weight: 600;">
+                    "खूबसूरत सा एक पल का किस्सा बन जाता है,<br>
+                    जाने कब कौन जिंदगी का हिस्सा बन जाता है,<br>
+                    कुछ लोग जिंदगी में ऐसे मिलते हैं,<br>
+                    जिनसे कभी न टूटने वाला रिश्ता बन जाता है।"
+                </span><br><br>
                 ❤️ इस इंटरनेट की दुनिया में आपका मेरे इस छोटे से कोने में आना और वक्त बिताना मेरे लिए बेहद खास है। थैंक यू!
             </p>
         </div>
+    </div>
 
-    </div> <script>
+    <script>
         function playStory() {
             var storyBox = document.getElementById("secretStory");
             if (storyBox.style.display === "none" || storyBox.style.display === "") {
@@ -159,25 +168,6 @@
             }
         }
     </script>
-
-
-
-
-        
-        <a href="#" class="btn">Connect With Me</a>
-    </div>
-    <script>
-    function playStory() {
-        var storyBox = document.getElementById("secretStory");
-        if (storyBox.style.display === "none" || storyBox.style.display === "") {
-            storyBox.style.display = "block";
-            storyBox.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            storyBox.style.display = "none";
-        }
-    }
-    </script>
-    
 
 </body>
 </html>
