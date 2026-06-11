@@ -134,6 +134,18 @@
     </p>
         <a href="#" class="btn">Connect With Me</a>
     </div>
+    <script>
+    function playStory() {
+        var storyBox = document.getElementById("secretStory");
+        if (storyBox.style.display === "none" || storyBox.style.display === "") {
+            storyBox.style.display = "block";
+            storyBox.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            storyBox.style.display = "none";
+        }
+    }
+    </script>
+    
 
 </body>
 </html>
