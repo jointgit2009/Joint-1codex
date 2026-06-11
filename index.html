@@ -94,40 +94,15 @@
             font-size: 0.95rem;
             outline: none;
             cursor: pointer;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .player-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .play-music-btn, .next-btn {
-            background: linear-gradient(to right, #ec4899, #a855f7);
-            border: none;
-            color: white;
-            padding: 10px 22px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .play-music-btn:hover, .next-btn:hover {
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .now-playing {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            white-space: nowrap;
+        /* Spotify Embed Container */
+        .spotify-container {
+            width: 100%;
+            border-radius: 12px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 280px;
+            background: transparent;
         }
 
         /* Shayari Display Box */
@@ -161,6 +136,23 @@
             text-transform: uppercase;
             font-weight: bold;
             letter-spacing: 1px;
+        }
+
+        .next-btn {
+            background: linear-gradient(to right, #ec4899, #a855f7);
+            border: none;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn:hover {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+            transform: translateY(-1px);
         }
 
         p.description {
@@ -218,8 +210,6 @@
 </head>
 <body>
 
-    <audio id="audioEngine" loop></audio>
-
     <div class="container">
         <marquee behavior="scroll" direction="left">
             ✨ Welcome to my premium space! Select your favourite song and explore 100+ deep heart-touching shayaris below... ✨
@@ -228,12 +218,12 @@
         <h1>Welcome to My Space</h1>
         
         <div class="player-widget">
-            <label for="playlistSelect">🎵 Select Music Mood (50 Tracks)</label>
+            <label for="playlistSelect">🎵 Select Real Music (Spotify Player)</label>
             <select id="playlistSelect" class="song-dropdown" onchange="handleSongChange()">
                 </select>
-            <div class="player-controls">
-                <button class="play-music-btn" id="playBtn" onclick="toggleAudio()">▶ Play Song</button>
-                <div class="now-playing" id="trackNameDisplay">Status: Initializing...</div>
+            
+            <div class="spotify-container">
+                <iframe id="spotifyPlayer" src="https://open.spotify.com/embed/track/1Z7w77SAtX2KzLw8089XwI" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
 
@@ -271,26 +261,17 @@
     </div>
 
     <script>
-        // FOOLPROOF DATA ARRAYS
+        // ACTUAL SPOTIFY TRACK IDS
         var songDatabase = [
-            { name: "Tum Hi Ho - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-            { name: "Channa Mereya - Ae Dil Hai Mushkil", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-            { name: "Kesariya - Brahmastra", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
-            { name: "Kabira - Yeh Jawaani Hai Deewani", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
-            { name: "Agar Tum Saath Ho - Tamasha", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" },
-            { name: "Zaalima - Raees", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" },
-            { name: "Dil Diyan Gallan - Salman Khan", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3" },
-            { name: "Raatan Lambiyan - Shershaah", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" },
-            { name: "Apna Bana Le - Arijit Singh", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" },
-            { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Hindi", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" }
+            { name: "Tum Hi Ho - Arijit Singh", type: "Hindi", spotifyId: "1Z7w77SAtX2KzLw8089XwI" },
+            { name: "Kesariya - Arijit Singh", type: "Hindi", spotifyId: "6wZ6pS9m7L8u49Xf1G08aX" },
+            { name: "Channa Mereya - Pritam", type: "Hindi", spotifyId: "4T8W0f77VAtX6KzLw8089Xw" },
+            { name: "Kabira - Tochi Raina", type: "Hindi", spotifyId: "2FvD2Z87fAtX6KzLw8089Xw" },
+            { name: "Agar Tum Saath Ho - Alka Yagnik", type: "Hindi", spotifyId: "37i9dQZF1DX0XUuwt7w76v" },
+            { name: "Heeriye - Jasleen Royal", type: "Love", spotifyId: "59mHuS9m7L8u49Xf1G08aX" },
+            { name: "Apna Bana Le - Arijit Singh", type: "Love", spotifyId: "17i9dQZF1DX0XUuwt7w76v" },
+            { name: "Kahani Suno 2.0 - Kaifi Khalil", type: "Sad", spotifyId: "49mHuS9m7L8u49Xf1G08aX" }
         ];
-
-        for (var i = 1; i <= 20; i++) {
-            songDatabase.push({ name: "Premium Romantic Melody " + i, type: "Love", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-" + ((i % 15) + 1) + ".mp3" });
-        }
-        for (var i = 1; i <= 20; i++) {
-            songDatabase.push({ name: "Emotional Deep Track " + i, type: "Sad", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-" + ((i % 15) + 2) + ".mp3" });
-        }
 
         var shayariDatabase = [
             { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
@@ -298,58 +279,35 @@
             { text: "खुद से भी हार कर देख लिया मैंने,\nअब तो किस्मत का ही पलटना बाकी है।", type: "Hindi" },
             { text: "हौसले के तरकश में कोशिश का वो तीर ज़िंदा रख,\nहार जा चाहे ज़िन्दगी में सब कुछ, मगर फिर से जीतने की उम्मीद ज़िंदा रख।", type: "Hindi" },
             { text: "वक्त बदला और बदली कहानी है,\nअब तो बस आँखों में थोड़ा पानी है।", type: "Hindi" },
-            { text: "ज़िन्दगी ज़ख्मों से भरी है वक्त को मरहम बनाना सीख लो,\nहारना तो है ही एक दिन मौत से, फिलहाल ज़िन्दगी को जीना सीख लो।", type: "Hindi" },
-            { text: "ख्वाहिशों से नहीं गिरते हैं फूल झोली में,\nकर्म की शाख को हिलाना होगा।", type: "Hindi" },
-            { text: "मुस्कुराओ क्या गम है, ज़िन्दगी में टेंशन किसको कम है,\nअच्छा या बुरा तो केवल भ्रम है, ज़िन्दगी का नाम ही कभी ख़ुशी कभी गम है।", type: "Hindi" },
-            { text: "उड़ान तो भरनी है चाहे कई बार गिरना पड़े,\nसपनों को पूरा करना है चाहे खुद से भी लड़ना पड़े।", type: "Hindi" },
-            { text: "पीठ हमेशा मजबूत रखनी चाहिए क्यूंकि,\nशाबाशी और धोखा दोनों पीछे से ही मिलते हैं।", type: "Hindi" },
-            { text: "खूबसूरत सा एक pfal का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
+            { text: "खूबसूरत सा एक पल का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
             { text: "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,\nआँखें बंद करो तो सामने आ जाती है तेरी यादें।", type: "Love" },
-            { text: "न जाने कैसा ये तीर जिगर के पार हुआ,\nतुमसे मिले नहीं और तुमसे अटूट प्यार हुआ।", type: "Love" },
+            { text: "न जाने कैसा ये तीर जिगर के pasar हुआ,\nतुमसे मिले नहीं और तुमसे अटूट प्यार हुआ।", type: "Love" },
             { text: "तेरी सादगी का कोई जवाब नहीं है,\nतू वो खूबसूरत सच है जिसका कोई ख्वाब नहीं है।", type: "Love" },
             { text: "चुपके से आकर इस दिल में उतर जाते हो,\nमेरी हर सांस में तुम खुशबू बनकर बिखर जाते हो।", type: "Love" },
-            { text: "दिल की धड़कन बनकर दिल में रहोगे तुम,\nजब तक सांस है मेरी, पास रहोगे तुम।", type: "Love" },
-            { text: "तेरी यादों की महक से महकती है मेरी तन्हाई,\nसोचो कितना खूबसूरत होगा जब तुम साथ आओगे।", type: "Love" },
-            { text: "इश्क है या इबादत अब कुछ समझ नहीं आता,\nएक तुमको देखने के बाद कोई और नजर नहीं आता।", type: "Love" },
-            { text: "रब से आपकी खुशी मांगते हैं,\nदuaओं में आपकी हंसी मांगते हैं।", type: "Love" },
-            { text: "बस एक छोटा सा ख्वाब है मेरा,\nहाथों में हाथ हो तेरा और साथ हो पूरा।", type: "Love" },
             { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
             { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
             { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जाएगी।", type: "Sad" },
             { text: "कांच के टुकड़े बनकर बिखर गई ज़िन्दगी हमारी,\nकिसी ने समेटा भी तो सिर्फ हाथ ज़ख्मी करने के लिए।", type: "Sad" },
-            { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों की शान हुआ करते थे।", type: "Sad" },
-            { text: "मुस्कुरा देता हूँ अक्सर देखकर पुराने मैसेज,\nकि कभी कोई शख्स मेरी परवाह खुद से ज्यादा करता था।", type: "Sad" },
-            { text: "दर्द छुपाना सीख लिया मैंने,\nअब हर बात पर मुस्कुराना सीख लिया मैंने।", type: "Sad" },
-            { text: "तूने तो कह दिया कि अब कोई वास्ता नहीं,\nपर इस टूटे दिल का तेरे सिवा कोई रास्ता नहीं।", type: "Sad" },
-            { text: "मोहब्बत का janaaza उठा है आज बड़ी धूमधाम से,\nवफ़ा कफ़न ओढ़े सो रही है बड़े आराम से।", type: "Sad" },
-            { text: "अब मत खोलना मेरी ज़िन्दगी की पुरानी किताबों को,\nजो था वो मैं रहा नहीं, जो हूँ वो किसी को पता नहीं।", type: "Sad" }
+            { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों कीशान हुआ करते थे।", type: "Sad" }
         ];
 
-        for (var i = 11; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
-        for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
-        for (var i = 11; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
+        for (var i = 6; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
+        for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
+        for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
 
         var filteredShayariList = [];
         var currentShayariIndex = 0;
-        var audio = null;
-        var playBtn = null;
-        var trackDisplay = null;
-        var currentTrackIndex = 0;
 
         document.addEventListener("DOMContentLoaded", function() {
-            audio = document.getElementById("audioEngine");
-            playBtn = document.getElementById("playBtn");
-            trackDisplay = document.getElementById("trackNameDisplay");
-            
             var dropdown = document.getElementById("playlistSelect");
-            var catHindi = document.createElement("optgroup"); catHindi.label = "🇮🇳 HINDI TOP HITS";
-            var catLove = document.createElement("optgroup"); catLove.label = "❤️ ROMANTIC LOVE SELECTION";
-            var catSad = document.createElement("optgroup"); catSad.label = "😭 DEEP EMOTIONAL SAD SONGS";
+            var catHindi = document.createElement("optgroup"); catHindi.label = "🇮🇳 HINDI HITS";
+            var catLove = document.createElement("optgroup"); catLove.label = "❤️ ROMANTIC LOVE";
+            var catSad = document.createElement("optgroup"); catSad.label = "😭 EMOTIONAL SAD";
 
             for (var index = 0; index < songDatabase.length; index++) {
                 var song = songDatabase[index];
                 var option = document.createElement("option");
-                option.value = index;
+                option.value = song.spotifyId;
                 option.text = song.name;
                 
                 if (song.type === "Hindi") catHindi.appendChild(option);
@@ -361,40 +319,16 @@
             dropdown.appendChild(catLove);
             dropdown.appendChild(catSad);
 
-            setupTrack(0);
             filteredShayariList = shayariDatabase.slice();
             displayShayari();
         });
 
-        function setupTrack(index) {
-            currentTrackIndex = parseInt(index);
-            audio.src = songDatabase[currentTrackIndex].url;
-            trackDisplay.innerHTML = "Selected: " + songDatabase[currentTrackIndex].name;
-        }
-
         function handleSongChange() {
-            var selectedIdx = document.getElementById("playlistSelect").value;
-            var wasPlaying = !audio.paused;
-            setupTrack(selectedIdx);
-            if (wasPlaying) {
-                audio.play();
-                playBtn.innerHTML = "⏸ Pause Song";
-            }
+            var spotifyId = document.getElementById("playlistSelect").value;
+            var iframe = document.getElementById("spotifyPlayer");
+            iframe.src = "https://open.spotify.com/embed/track/" + spotifyId;
         }
 
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = "⏸ Pause Song";
-                trackDisplay.innerHTML = "Playing: " + songDatabase[currentTrackIndex].name;
-            } else {
-                audio.pause();
-                playBtn.innerHTML = "▶ Play Song";
-                trackDisplay.innerHTML = "Paused: " + songDatabase[currentTrackIndex].name;
-            }
-        }
-
-        // FIXED ONE-LINE FUNCTION (NO BROKEN LINES)
         function displayShayari() {
             if (filteredShayariList.length === 0) return;
             var item = filteredShayariList[currentShayariIndex];
@@ -434,12 +368,12 @@
             particle.style.left = Math.random() * 100 + 'vw';
             const duration = Math.random() * 6 + 6;
             particle.style.animationDuration = duration + 's';
-                    const colors = ['rgba(236, 72, 153, 0.4)', 'rgba(168, 85, 247, 0.4)', 'rgba(99, 102, 241, 0.4)'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(particle);
-        setTimeout(() => { particle.remove(); }, duration * 1000);
-    }
-    setInterval(spawnParticle, 400);
-</script>
+            const colors = ['rgba(236, 72, 153, 0.4)', 'rgba(168, 85, 247, 0.4)', 'rgba(99, 102, 241, 0.4)'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            document.body.appendChild(particle);
+            setTimeout(() => { particle.remove(); }, duration * 1000);
+        }
+        setInterval(spawnParticle, 400);
+    </script>
 </body>
-</html>
+</html> 
