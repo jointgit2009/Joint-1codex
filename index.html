@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Space | Premium Music, Shayari & Real Gemini AI</title>
+    <title>Welcome to My Space | Real YouTube Music, Shayari & Gemini AI</title>
     <style>
         /* Base Reset */
         * {
@@ -97,7 +97,6 @@
             margin-bottom: 15px;
         }
 
-        /* Audio Controls Styling */
         .audio-controls {
             display: flex;
             justify-content: space-between;
@@ -125,11 +124,11 @@
 
         .status-text {
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #10b981;
             font-weight: 500;
         }
 
-        /* 🤖 REAL GEMINI CHATBOX STYLES */
+        /* 🤖 GEMINI CHATBOX STYLES */
         .chat-container {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -288,6 +287,9 @@
             color: #94a3b8;
             margin-bottom: 20px;
             text-align: justify;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 12px;
         }
 
         .monetize-footer {
@@ -342,16 +344,14 @@
         <h1>Welcome to My Space</h1>
         
         <div class="player-widget">
-            <label for="trackSelect">🎵 SELECT MUSIC MOOD (REAL SONGS)</label>
-            <select id="trackSelect" class="song-dropdown" onchange="changeTrack()">
+            <label for="trackSelect">🎵 SELECT REAL MUSIC (OPENS ON NEXT PAGE)</label>
+            <select id="trackSelect" class="song-dropdown">
                 </select>
             
             <div class="audio-controls">
-                <button id="playBtn" class="play-btn" onclick="toggleAudio()">▶ Play Song</button>
-                <div id="trackDisplay" class="status-text">Status: Stopped</div>
+                <button id="playBtn" class="play-btn" onclick="playSongOnNextPage()">▶ Play Song 🚀</button>
+                <div id="trackDisplay" class="status-text">Ready to Open...</div>
             </div>
-            
-            <audio id="mainAudio" preload="auto"></audio>
         </div>
 
         <div class="chat-container">
@@ -409,14 +409,14 @@
     </div>
 
     <script>
-        // MUSIC DATABASE
+        // GOOGLE/YOUTUBE REAL SONG LINKS
         var songDatabase = [
-            { name: "Tum Hi Ho - Arijit Singh", type: "Love", url: "songs/tum_hi_ho.mp3" },
-            { name: "Kesariya - Arijit Singh", type: "Love", url: "songs/kesariya.mp3" },
-            { name: "Apna Bana Le - Arijit Singh", type: "Love", url: "songs/apna_bana_le.mp3" },
-            { name: "Heeriye - Jasleen Royal", type: "Love", url: "songs/heeriye.mp3" },
-            { name: "Channa Mereya - Arijit Singh", type: "Sad", url: "songs/channa_mereya.mp3" },
-            { name: "Kahani Suno 2.0 - Kaifi Khalil", type: "Sad", url: "songs/kahani_suno.mp3" }
+            { name: "Tum Hi Ho - Arijit Singh", type: "Love", url: "https://www.youtube.com/watch?v=Umqb9KENgmk" },
+            { name: "Kesariya - Arijit Singh", type: "Love", url: "https://www.youtube.com/watch?v=BddP6NJmslw" },
+            { name: "Apna Bana Le - Arijit Singh", type: "Love", url: "https://www.youtube.com/watch?v=ElZfdU54Cp8" },
+            { name: "Heeriye - Jasleen Royal ft. Arijit", type: "Love", url: "https://www.youtube.com/watch?v=RLzC55DX6I8" },
+            { name: "Channa Mereya - Arijit Singh", type: "Sad", url: "https://www.youtube.com/watch?v=z-diRlyLGzo" },
+            { name: "Kahani Suno 2.0 - Kaifi Khalil", type: "Sad", url: "https://www.youtube.com/watch?v=XBNU5_3u6as" }
         ];
 
         // SHAYARI DATABASE
@@ -424,7 +424,7 @@
             { text: "ज़िंदगी की हकीकत को बस इतना ही जाना है,\nदर्द में अकेले हैं और खुशियों में ज़माना है।", type: "Hindi" },
             { text: "सफ़र में धूप तो होगी जो चल सको तो चलो,\nसभी हैं भीड़ में तुम भी निकल सको तो चलो।", type: "Hindi" },
             { text: "खुद से भी हार कर देख लिया मैंने,\nअब तो किस्मत का ही पलटना बाकी है।", type: "Hindi" },
-            { text: "हौसले के तरकश में कोशिश का wo तीर ज़िंदा रख,\nहार जा चाहे ज़िन्दगी में सब कुछ, मगर फिर से जीतने की उम्मीद ज़िंदा रख।", type: "Hindi" },
+            { text: "हौसले के तरकश में कोशिश का वो तीर ज़िंदा रख,\nहार जा चाहे ज़िन्दगी में सब कुछ, मगर फिर से जीतने की उम्मीद ज़िंदा रख।", type: "Hindi" },
             { text: "वक्त बदला और बदली कहानी है,\nअब तो बस आँखों में थोड़ा पानी है।", type: "Hindi" },
             { text: "खूबसूरत सा एक पल का किस्सा बन जाता है,\nजाने कब कौन जिंदगी का हिस्सा बन जाता है।", type: "Love" },
             { text: "धड़कन को कुछ ऐसे तड़पाती है तेरी यादें,\nआँखें बंद करो तो सामने आ जाती है तेरी यादें।", type: "Love" },
@@ -433,34 +433,31 @@
             { text: "चुपके से आकर इस दिल में उतर जाते हो,\nमेरी हर सांस में तुम खुशबू बनकर बिखर जाते हो।", type: "Love" },
             { text: "लोग कहते हैं कि सो जाते हैं सब रात में,\nपर हमें तो जगा कर चली जाती है तेरी यादें।", type: "Sad" },
             { text: "बड़ी तब्दीली लाए हैं हम अपनी ज़िन्दगी में,\nअब उसके नाम की दुआ भी नहीं करते।", type: "Sad" },
-            { text: "रोए बिना तो प्याज भी नहीं cutta साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे cut jayegi।", type: "Sad" },
+            { text: "रोए बिना तो प्याज भी नहीं कटता साहब,\nये तो फिर भी ज़िन्दगी है, ऐसे कैसे कट जायेगी।", type: "Sad" },
             { text: "कांच के टुकड़े बनकर बिखर गई ज़िन्दगी हमारी,\nकिसी ने समेटा भी तो सिर्फ हाथ ज़ख्मी करने के लिए।", type: "Sad" },
-            { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों कीशान हुआ करते थे।", type: "Sad" }
+            { text: "वक्त ने सिखा दिया मुझे अकेले जीना,\nवरना कभी हम भी महफिलों की शान हुआ करते थे।", type: "Sad" }
         ];
 
+        // Fill up to 100 entries automatically
         for (var i = 6; i <= 20; i++) { shayariDatabase.push({ text: "ज़िंदगी का सफ़र यूँ ही चलता रहेगा भाग " + i + ",\nवक़्त के साए में हर कोई धीरे-धीरे ढलता रहेगा।", type: "Hindi" }); }
         for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "तुम्हारी यादों का साया इस दिल में धड़कता है भाग " + i + ",\nतुम्हें पाना ही मेरी सच्ची मोहब्बत का सिला लगता है।", type: "Love" }); }
-        for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ye दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
+        for (var i = 6; i <= 40; i++) { shayariDatabase.push({ text: "ये उदास रातें और ये दर्द का गहरा साया भाग " + i + ",\nउसने एक बार भी मुड़कर न देखा जिसे दिल से चाहा था।", type: "Sad" }); }
 
         var filteredShayariList = [];
         var currentShayariIndex = 0;
-        var audio, playBtn, trackDisplay;
 
         document.addEventListener("DOMContentLoaded", function() {
-            audio = document.getElementById("mainAudio");
-            playBtn = document.getElementById("playBtn");
-            trackDisplay = document.getElementById("trackDisplay");
-
             // Load saved API Key if any
             var savedKey = localStorage.getItem("gemini_api_key");
             if(savedKey) {
                 document.getElementById("apiKeyInput").value = savedKey;
-                document.getElementById("welcomeMsg").innerText = "Namaste! Aapki Saved Gemini API Key mil gayi hai. Ab aap mujhse kuch bhi pooch sakte hain! Main bilkul real AI ki tarah jawab dunga. 💬✨";
+                document.getElementById("welcomeMsg").innerText = "Namaste! Aapki Saved Gemini API Key mil gayi hai. Ab aap chat shuru kar sakte hain! 💬✨";
             }
 
+            // Fill Music Dropdown
             var dropdown = document.getElementById("trackSelect");
-            var catLove = document.createElement("optgroup"); catLove.label = "❤️ ROMANTIC LOVE";
-            var catSad = document.createElement("optgroup"); catSad.label = "😭 EMOTIONAL SAD";
+            var catLove = document.createElement("optgroup"); catLove.label = "❤️ YOUTUBE ROMANTIC SONGS";
+            var catSad = document.createElement("optgroup"); catSad.label = "😭 YOUTUBE EMOTIONAL SONGS";
 
             for (var index = 0; index < songDatabase.length; index++) {
                 var song = songDatabase[index];
@@ -475,32 +472,20 @@
             dropdown.appendChild(catLove);
             dropdown.appendChild(catSad);
 
-            audio.src = songDatabase[0].url;
             filteredShayariList = shayariDatabase.slice();
             displayShayari();
         });
 
-        function toggleAudio() {
+        // CLICK HOTE HI AGLE PAGE PAR OPEN HOGA
+        function playSongOnNextPage() {
             var selectedIndex = document.getElementById("trackSelect").value;
-            var currentTrackName = songDatabase[selectedIndex].name;
+            var targetUrl = songDatabase[selectedIndex].url;
+            var songName = songDatabase[selectedIndex].name;
 
-            if (audio.paused) {
-                audio.play().catch(function(e){});
-                playBtn.innerHTML = "⏸ Pause Song";
-                trackDisplay.innerHTML = "Playing: " + currentTrackName;
-            } else {
-                audio.pause();
-                playBtn.innerHTML = "▶ Play Song";
-                trackDisplay.innerHTML = "Paused: " + currentTrackName;
-            }
-        }
-
-        function changeTrack() {
-            var selectedIndex = document.getElementById("trackSelect").value;
-            audio.src = songDatabase[selectedIndex].url;
-            audio.play().catch(function(e){});
-            playBtn.innerHTML = "⏸ Pause Song";
-            trackDisplay.innerHTML = "Playing: " + songDatabase[selectedIndex].name;
+            document.getElementById("trackDisplay").innerHTML = "Opening: " + songName + " ➡️";
+            
+            // This opens YouTube on the next page (New Tab)
+            window.open(targetUrl, '_blank');
         }
 
         function displayShayari() {
@@ -529,7 +514,6 @@
                     }
                 }
             }
-            currentShayariIndex = 0;
             displayShayari();
         }
 
