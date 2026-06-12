@@ -332,6 +332,127 @@
             h1 { font-size: 1.8rem; }
             .container { padding: 25px 15px; }
         }
+        /* ⭐ FEEDBACK WIDGET STYLES */
+.feedback-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-container:hover {
+    border-color: #ec4899;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.2);
+}
+
+.rating-stars {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.star {
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.star:hover, .star.active {
+    color: #fbbf24;
+    transform: scale(1.2);
+}
+
+.feedback-form input, .feedback-form textarea {
+    width: 100%;
+    background: #111133;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.feedback-form textarea {
+    resize: none;
+    height: 70px;
+}
+
+.feedback-submit-btn {
+    background: linear-gradient(to right, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.feedback-submit-btn:hover {
+    filter: brightness(1.1);
+}
+
+.success-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #1e1b4b;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+.success-overlay.show {
+    transform: translateY(0);
+}
+
+.success-overlay span {
+    font-size: 3rem;
+    animation: pulseStar 1.5s infinite;
+}
+
+/* 📜 ANIMATED DESCRIPTION BOX STYLES */
+.description-box {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    text-align: justify;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border-radius: 16px;
+    border-left: 4px solid #a855f7;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+    animation: floatBox 4s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.description-box:hover {
+    border-left-color: #ec4899;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+@keyframes floatBox {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); box-shadow: 0 10px 20px rgba(168, 85, 247, 0.1); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulseStar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); text-shadow: 0 0 15px #fbbf24; }
+    100% { transform: scale(1); }
+}
+        
     </style>
 </head>
 <body>
@@ -393,6 +514,33 @@
                 <button class="next-btn" onclick="nextShayari()">Next Shayari ➡️</button>
             </div>
         </div>
+        <div class="feedback-container">
+    <label style="font-size: 0.8rem; color: #10b981; display: block; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+        📝 Share Your Feedback
+    </label>
+    <div class="feedback-form" id="feedbackForm">
+        <div class="rating-stars">
+            <span class="star" onclick="setRating(1)">★</span>
+            <span class="star" onclick="setRating(2)">★</span>
+            <span class="star" onclick="setRating(3)">★</span>
+            <span class="star" onclick="setRating(4)">★</span>
+            <span class="star" onclick="setRating(5)">★</span>
+        </div>
+        <input type="text" id="fbName" placeholder="Aapka Naam / Your Name">
+        <textarea id="fbMsg" placeholder="Apna keemti sujhav likhein (Feedback)..."></textarea>
+        <button class="feedback-submit-btn" onclick="submitFeedbackForm()">Submit Feedback 🚀</button>
+    </div>
+    <div class="success-overlay" id="successOverlay">
+        <span>⭐</span>
+        <h3 style="margin-top: 10px; color: #10b981;">Thank You So Much!</h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 5px;">Aapka feedback save ho gaya hai. 👍</p>
+    </div>
+</div>
+
+<div class="description-box">
+    इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है।
+</div>
+        
         
         <p class="description">
             इस इंटरनेट की मतलबी और भागती हुई दुनिया में, जहाँ लोग अक्सर बिना रुके आगे बढ़ जाते हैं, आपका यहाँ ठहरना मेरे लिए बेहद खास है। यह वेबसाइट सिर्फ कुछ लाइनों का कोड नहीं है, बल्कि इसमें मेरी रातों की मेहनत, कुछ अनकही कहानियाँ और एक नई शुरुआत की धड़कन है।
@@ -603,6 +751,41 @@
             setTimeout(() => { particle.remove(); }, duration * 1000);
         }
         setInterval(spawnParticle, 400);
+        // ⭐ NEW FEEDBACK LOGIC
+var selectedRating = 0;
+
+function setRating(rating) {
+    selectedRating = rating;
+    var stars = document.querySelectorAll('.star');
+    for(var i=0; i<stars.length; i++) {
+        if(i < rating) {
+            stars[i].classList.add('active');
+        } else {
+            stars[i].classList.remove('active');
+        }
+    }
+}
+
+function submitFeedbackForm() {
+    var name = document.getElementById('fbName').value.trim();
+    var msg = document.getElementById('fbMsg').value.trim();
+
+    if(selectedRating === 0) {
+        alert("Please select at least 1 Star rating! ⭐");
+        return;
+    }
+    if(name === "" || msg === "") {
+        alert("Please fill both Name and Feedback details! 📝");
+        return;
+    }
+
+    var feedbackData = { name: name, rating: selectedRating, message: msg };
+    localStorage.setItem("user_feedback", JSON.stringify(feedbackData));
+
+    // Trigger sleek success overlay animation
+    document.getElementById('successOverlay').classList.add('show');
+}
+        
     </script>
 </body>
 </html>
